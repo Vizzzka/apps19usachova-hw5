@@ -1,20 +1,17 @@
 package ua.edu.ucu.iterator;
 
-import ua.edu.ucu.stream.AsIntStream;
-
 import java.util.Arrays;
-import java.util.Iterator;
 
 public class DefaultIterator implements AsIntStreamIterator {
 
     private int[] values;
     private int currentElement;
-    public int size;
+    private int size;
 
     public DefaultIterator(int... values) {
         this.values = values;
         this.size = this.values.length;
-        currentElement = 0;
+        this.currentElement = 0;
     }
 
     @Override

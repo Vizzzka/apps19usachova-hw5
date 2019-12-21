@@ -2,14 +2,14 @@ package ua.edu.ucu.iterator;
 
 import ua.edu.ucu.function.IntPredicate;
 
-import java.util.Iterator;
 
-public class FilterDecorator extends IteratorDecorator{
+public class FilterDecorator extends IteratorDecorator {
 
     private IntPredicate predicate;
     private Integer currentValue;
 
-    public FilterDecorator(AsIntStreamIterator iterator, IntPredicate predicate) {
+    public FilterDecorator(AsIntStreamIterator iterator,
+                           IntPredicate predicate) {
         super(iterator);
         this.predicate = predicate;
         while (super.hasNext()) {

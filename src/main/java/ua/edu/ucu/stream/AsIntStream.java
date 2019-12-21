@@ -15,7 +15,8 @@ public class AsIntStream implements IntStream {
     }
 
     public static IntStream of(int... values) {
-        return new AsIntStream(new IteratorDecorator(new DefaultIterator(values)));
+        return new AsIntStream(new IteratorDecorator(
+                new DefaultIterator(values)));
     }
 
     public IteratorDecorator getIteratorDecorator() {
@@ -24,23 +25,26 @@ public class AsIntStream implements IntStream {
 
     @Override
     public Double average() {
-        if (isEmpty())
+        if (isEmpty()) {
             throw new IllegalArgumentException("no elements");
+        }
         double sum = this.sum();
         return sum / this.count();
     }
 
     @Override
     public Integer max() {
-        if (isEmpty())
+        if (isEmpty()) {
             throw new IllegalArgumentException("no elements");
+        }
         return reduce(Integer.MIN_VALUE, (maxi, x) -> Math.max(x, maxi));
     }
 
     @Override
     public Integer min() {
-        if (isEmpty())
+        if (isEmpty()) {
             throw new IllegalArgumentException("no elements");
+        }
         return reduce(Integer.MAX_VALUE, (mini, x) -> Math.min(x, mini));
     }
 
@@ -51,14 +55,16 @@ public class AsIntStream implements IntStream {
 
     @Override
     public Integer sum() {
-        if (isEmpty())
+        if (isEmpty()) {
             throw new IllegalArgumentException("no elements");
+        }
         return reduce(0, (sum, x) -> sum += x);
     }
 
     @Override
     public IntStream filter(IntPredicate predicate) {
-        return new AsIntStream(new FilterDecorator(this.iteratorDecorator.copy(), predicate));
+        return new AsIntStream(new FilterDecorator(
+                this.iteratorDecorator.copy(), predicate));
     }
 
     @Override
@@ -71,12 +77,14 @@ public class AsIntStream implements IntStream {
 
     @Override
     public IntStream map(IntUnaryOperator mapper) {
-        return new AsIntStream(new MapDecorator(this.iteratorDecorator.copy(), mapper));
+        return new AsIntStream(new MapDecorator(
+                this.iteratorDecorator.copy(), mapper));
     }
 
     @Override
     public IntStream flatMap(IntToIntStreamFunction func) {
-        return new AsIntStream(new FlatMapDecorator(this.iteratorDecorator.copy(), func));
+        return new AsIntStream(new FlatMapDecorator(
+                this.iteratorDecorator.copy(), func));
     }
 
     @Override
@@ -96,12 +104,13 @@ public class AsIntStream implements IntStream {
         while (this.iteratorDecorator.hasNext()) {
             list.add(this.iteratorDecorator.next());
         }
-        Integer[] IntNewValues = list.toArray(new Integer[0]);
-        int[] newValues = new int[IntNewValues.length];
-        for (int i = 0; i < IntNewValues.length; ++i) {
-            newValues[i] = IntNewValues[i];
+        Integer[] intNewValues = list.toArray(new Integer[0]);
+        int[] newValues = new int[intNewValues.length];
+        for (int i = 0; i < intNewValues.length; ++i) {
+            newValues[i] = intNewValues[i];
         }
-        this.iteratorDecorator = new IteratorDecorator(new DefaultIterator(newValues));
+        this.iteratorDecorator = new IteratorDecorator(
+                new DefaultIterator(newValues));
         return newValues;
     }
 

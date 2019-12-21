@@ -4,11 +4,12 @@ import ua.edu.ucu.function.IntUnaryOperator;
 
 import java.util.Iterator;
 
-public class MapDecorator extends IteratorDecorator{
+public class MapDecorator extends IteratorDecorator {
 
     private IntUnaryOperator intUnaryOperator;
 
-    public MapDecorator(AsIntStreamIterator iterator, IntUnaryOperator intUnaryOperator) {
+    public MapDecorator(AsIntStreamIterator iterator,
+                        IntUnaryOperator intUnaryOperator) {
         super(iterator);
         this.intUnaryOperator = intUnaryOperator;
     }

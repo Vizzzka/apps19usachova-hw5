@@ -1,8 +1,6 @@
 package ua.edu.ucu.iterator;
 
-import ua.edu.ucu.stream.AsIntStream;
 
-import java.util.Iterator;
 
 public class IteratorDecorator implements AsIntStreamIterator {
 
