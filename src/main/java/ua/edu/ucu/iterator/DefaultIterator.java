@@ -1,6 +1,7 @@
 package ua.edu.ucu.iterator;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 public class DefaultIterator implements AsIntStreamIterator {
 
@@ -20,9 +21,9 @@ public class DefaultIterator implements AsIntStreamIterator {
     }
 
     @Override
-    public Integer next() {
+    public Integer next() throws NoSuchElementException {
         if (this.size == this.currentElement) {
-            return null;
+            throw new NoSuchElementException();
         }
         return this.values[this.currentElement++];
     }

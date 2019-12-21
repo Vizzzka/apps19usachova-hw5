@@ -2,7 +2,6 @@ package ua.edu.ucu.iterator;
 
 import ua.edu.ucu.function.IntUnaryOperator;
 
-import java.util.Iterator;
 
 public class MapDecorator extends IteratorDecorator {
 
