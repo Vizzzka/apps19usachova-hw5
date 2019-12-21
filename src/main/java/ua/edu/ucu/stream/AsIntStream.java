@@ -108,5 +108,4 @@ public class AsIntStream implements IntStream {
     private boolean isEmpty() {
         return !this.iteratorDecorator.hasNext();
     }
-
 }
